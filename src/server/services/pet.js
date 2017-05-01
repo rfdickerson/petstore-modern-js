@@ -1,7 +1,7 @@
 
-import * as redis from 'redis'
+const redis = require('redis')
 
-import { Pet } from '../../models/Pet'
+const Pet = require('../../models/Pet')
 
 class PetService {
 
@@ -9,13 +9,13 @@ class PetService {
 
   }
 
-  addPet(p: Pet) {
+  addPet(p) {
 
     console.log('Adding pet')
 
     let client = redis.createClient()
 
-    client.on('error', (err: any) => {
+    client.on('error', (err) => {
       console.log('error: ' + err)
     })
 
@@ -25,4 +25,4 @@ class PetService {
 
 }
 
-export { PetService }
+module.exports = PetService

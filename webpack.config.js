@@ -1,5 +1,11 @@
+
+var path = require('path');
+
+var BUILD_DIR = path.resolve(__dirname, 'public');
+var APP_DIR = path.resolve(__dirname, 'src/client/app');
+
 module.exports = {
-    entry: "./src/client/index.tsx",
+    entry: "./src/client/index.js",
     output: {
         filename: "bundle.js",
         path: __dirname + "/dist"
@@ -15,11 +21,13 @@ module.exports = {
 
     module: {
         rules: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            {
+                test    : /\.jsx?/,
+                include : APP_DIR,
+                loader  : 'babel-loader'
+            }
         ]
     },
 

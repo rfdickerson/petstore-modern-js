@@ -1,13 +1,11 @@
 
-export interface ApiResponse {
+function ApiResponse(code, type, message) {
+    this.code = code
+    this.type = type 
+    this.message = message 
+} 
 
-    code: number 
-    type: string 
-    message: string 
-
-}
-
-export function readApiResponse(json: any): ApiResponse {
+function readApiResponse(json) {
 
     if (!json.hasOwnProperty('code')) {
         throw 'No code property'
@@ -23,3 +21,6 @@ export function readApiResponse(json: any): ApiResponse {
 
     return json
 }
+
+exports.ApiResponse = ApiResponse
+exports.readApiResponse = readApiResponse

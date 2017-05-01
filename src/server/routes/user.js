@@ -1,6 +1,6 @@
-import * as express from 'express'
 
-let router = express.Router()
+const express = require('express')
+const router = express.Router()
 
 router.get("/logout", (req, res, next) => {
 
@@ -40,7 +40,7 @@ router.delete("/:username", (req, res, next) => {
 
 })
 
-export = router
+module.exports = router 
 
 
 

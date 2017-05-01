@@ -1,4 +1,4 @@
-import * as express from 'express'
+const express = require('express')
 
 let router = express.Router()
 
@@ -11,4 +11,4 @@ router.post("/order", (req, res, next) => {
     
 })
 
-export = router
+module.exports = router

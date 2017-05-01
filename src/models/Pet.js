@@ -1,23 +1,17 @@
 
-export interface Pet {
-
-    id: number
-
-    name: string
-
-    photoUrls: Array<string>
-    
-    tags: Array<string>
-
-    // pet status in the store
-    status: string 
+function Pet(id, name, photoUrls, tags, status) {
+    this.id = id
+    this.name = name
+    this.photoUrls = photoUrls
+    this.tags = tags
+    this.status = status
 }
 
-export function printPet(pet: Pet) {
+function printPet(pet) {
     console.log(pet.id);
 }
 
-export function readPetJSON(json: any): Pet {
+function readPetJSON(json) {
 
     if (!json.hasOwnProperty('id')) {
         throw 'No code property'
@@ -41,3 +35,7 @@ export function readPetJSON(json: any): Pet {
 
     return json
 }
+
+exports.Pet = Pet 
+exports.printPet = printPet
+exports.readPetJSON = readPetJSON
